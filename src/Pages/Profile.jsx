@@ -18,7 +18,7 @@ const Profile = () => {
             <div className="flex gap-2 items-center mt-4 mb-2">
               <FaUserCircle className="text-2xl text-red-700" />
               <div>
-                <h5 className="text-sm font-bold">{userState.user?.fullName}</h5>
+                <h5 className="text-sm font-bold">{userState.user?.fullname}</h5>
                 <p className="text-xs">Full name</p>
               </div>
             </div>
@@ -59,8 +59,12 @@ const Profile = () => {
             </div>
           </div>
           <div className="w-1/3 flex flex-col justify-between">
-            <img src={`http://localhost:5000/uploads/${userState.user?.thumbnail}`} alt="" className="w-full h-full object-cover rounded-sm" />
-            <button onClick={() => modalDispatch({ type: 'PROFILE_UPDATE_MODAL' })} className="w-full bg-red-700 text-white mt-2 rounded-md py-2">
+            <img
+              src={`https://images.unsplash.com/photo-1474447976065-67d23accb1e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=385&q=80`}
+              alt=""
+              className="w-full h-full object-cover rounded-sm"
+            />
+            <button disabled={true} onClick={() => modalDispatch({ type: 'PROFILE_UPDATE_MODAL' })} className="w-full disabled:bg-red-700/60 bg-red-700 text-white mt-2 rounded-md py-2">
               Update Profile
             </button>
           </div>
