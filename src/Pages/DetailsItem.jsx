@@ -84,7 +84,7 @@ const DetailsItem = (props) => {
           </div>
         </div>
       </div>
-      {movie && <UpdateMovie movieDets={movie} />}
+      {userState.user.roles === 'admin' && movie && <UpdateMovie movieDets={movie} />}
     </React.Fragment>
   );
 };
