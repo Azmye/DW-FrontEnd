@@ -8,6 +8,7 @@ import { ModalContext } from '../Context/ModalContext';
 import { useQuery } from 'react-query';
 import { API } from '../Config/Api';
 import placeholderThumb from '../assets/img/thumbnail_video_placeholder.jpg';
+import UpdateMovie from '../Components/Global/UpdateMovie';
 
 const DetailsItem = (props) => {
   const { id } = useParams();
@@ -18,7 +19,7 @@ const DetailsItem = (props) => {
   const [urlVideo, setUrlVideo] = useState(null);
   const [episode, setEpisode] = useState(null);
 
-  const { data: movie } = useQuery(' ', async () => {
+  const { data: movie } = useQuery('movieDetailCache', async () => {
     const response = await API.get(`${props.endpoint}${id}`);
     return response.data.data;
   });
@@ -27,8 +28,6 @@ const DetailsItem = (props) => {
     const response = await API.get(`/film/${id}/episode`);
     return response.data.data;
   });
-
-  console.log(episodes);
 
   useEffect(() => {
     episodes?.map((index) => setEpisode(index));
@@ -55,14 +54,9 @@ const DetailsItem = (props) => {
 
       {userState.user.roles === 'admin' ? (
         <div className="bg-black text-end container mx-auto px-8 py-5">
-          <button onClick={() => modalDispatch({ type: 'ADD_EPISODE_MODAL' })} className="bg-green-700 text-white px-8 py-2 rounded-md">
+          <button onClick={() => modalDispatch({ type: 'ADD_EPISODE_MODAL' })} className="bg-green-700 text-white px-8 py-2 rounded-md mr-5">
             Add Episode
           </button>
-
-          <button onClick={() => modalDispatch({ type: 'ADD_EPISODE_MODAL' })} className="mx-5 bg-blue-700 text-white px-8 py-2 rounded-md">
-            Edit Episode
-          </button>
-
           <button onClick={() => modalDispatch({ type: 'DELETE_CONFIRMATION_MODAL' })} className="bg-red-700 text-white px-8 py-2 rounded-md">
             Delete
           </button>
@@ -90,6 +84,7 @@ const DetailsItem = (props) => {
           </div>
         </div>
       </div>
+      {movie && <UpdateMovie movieDets={movie} />}
     </React.Fragment>
   );
 };
