@@ -18,42 +18,42 @@ const Profile = () => {
             <div className="flex gap-2 items-center mt-4 mb-2">
               <FaUserCircle className="text-2xl text-red-700" />
               <div>
-                <h5 className="text-sm font-bold">{userState.user?.fullname}</h5>
+                <h5 className="text-sm font-bold">{userState?.user.fullname}</h5>
                 <p className="text-xs">Full name</p>
               </div>
             </div>
             <div className="flex gap-2 items-center mb-2">
               <FaEnvelope className="text-2xl text-red-700" />
               <div>
-                <h5 className="text-sm font-bold">{userState.user?.email}</h5>
+                <h5 className="text-sm font-bold">{userState?.user.email}</h5>
                 <p className="text-xs">Email</p>
               </div>
             </div>
             <div className="flex gap-2 items-center mb-2">
               <FaCreditCard className="text-2xl text-red-700" />
               <div>
-                <h5 className="text-sm font-bold">{userState.user?.subscribe ? 'active' : 'cancel'}</h5>
+                <h5 className="text-sm font-bold">{userState?.user.subscribe ? 'active' : 'cancel'}</h5>
                 <p className="text-xs">Status</p>
               </div>
             </div>
             <div className="flex gap-2 items-center mb-2">
               <BsGenderAmbiguous className="text-2xl text-red-700" />
               <div>
-                <h5 className="text-sm font-bold">{userState.user?.gender}</h5>
+                <h5 className="text-sm font-bold">{userState?.user.gender}</h5>
                 <p className="text-xs">Gender</p>
               </div>
             </div>
             <div className="flex gap-2 items-center mb-2">
               <FaPhone className="text-2xl text-red-700" />
               <div>
-                <h5 className="text-sm font-bold">{userState.user?.phone}</h5>
+                <h5 className="text-sm font-bold">{userState?.user.phone}</h5>
                 <p className="text-xs">Mobile Phone</p>
               </div>
             </div>
             <div className="flex gap-2 items-center">
               <FaLocationArrow className="text-2xl text-red-700" />
               <div>
-                <h5 className="text-sm font-bold">{userState.user?.address}</h5>
+                <h5 className="text-sm font-bold">{userState?.user.address}</h5>
                 <p className="text-xs">Address</p>
               </div>
             </div>
