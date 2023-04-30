@@ -48,7 +48,7 @@ const UpdateMovie = ({ movieDets }) => {
 
         await API.patch(`/film/${movieDets.id}`, formData, config);
         setMessage(<AlertSuccess message="Success to update film" />);
-        navigate(`/admin-dashboard`);
+        navigate(`/`);
       } catch (err) {
         e.preventDefault();
         setMessage(<AlertError message="Failed to update film" />);
