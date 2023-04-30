@@ -12,7 +12,7 @@ import UpdateMovie from '../Components/Global/UpdateMovie';
 
 const DetailsItem = (props) => {
   const { id } = useParams();
-  const { data } = useFetch(`${props.endpoint}${id}`);
+  const { data } = useFetch(`/film/${id}`);
   const { tmdb_originalImage, tmdb_w500Image } = ApiConfig;
   const [userState, userDispatch] = useContext(UserContext);
   const [modalState, modalDispatch] = useContext(ModalContext);

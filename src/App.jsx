@@ -68,13 +68,13 @@ const App = () => {
         <Route element={<PrivateRouteLogin />}>
           <Route element={<PrivateRouteUser />}>
             <Route path="/profile" element={<Profile />} />
-            <Route path="/movie-details/:id" element={<DetailItem endpoint={'/film/'} />} />
-            <Route path="/shows-details/:id" element={<DetailItem endpoint={'/film/'} />} />
+            <Route path="/movie-details/:id" element={<DetailItem />} />
+            <Route path="/shows-details/:id" element={<DetailItem />} />
             <Route path="user-payment" element={<Payment />} />
           </Route>
           <Route element={<PrivateRouteAdmin />}>
-            <Route path="/admin-movie-details/:id" element={<DetailItem endpoint={'/film/'} />} />
-            <Route path="/admin-shows-details/:id" element={<DetailItem endpoint={'/film/'} />} />
+            <Route path="/admin-movie-details/:id" element={<DetailItem />} />
+            <Route path="/admin-shows-details/:id" element={<DetailItem />} />
             <Route path="/admin-dashboard" element={<AdminHome />} />
             <Route path="/admin-form" element={<AdminAddMovie />} />
             <Route path="/admin-transactions" element={<AdminTransactions />} />
