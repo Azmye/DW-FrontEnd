@@ -56,10 +56,10 @@ const UpdateMovie = ({ movieDets }) => {
     },
     {
       onSuccess: () => {
-        QueryCache.invalidateQueries('moviesCache');
+        QueryCache.invalidateQueries('movieDetailCache');
       },
       onError: () => {
-        QueryCache.invalidateQueries('moviesCache');
+        QueryCache.invalidateQueries('movieDetailCache');
       },
     }
   );
