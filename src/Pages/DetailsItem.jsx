@@ -12,7 +12,6 @@ import UpdateMovie from '../Components/Global/UpdateMovie';
 
 const DetailsItem = (props) => {
   const { id } = useParams();
-  const { data } = useFetch(`/film/${id}`);
   const { tmdb_originalImage, tmdb_w500Image } = ApiConfig;
   const [userState, userDispatch] = useContext(UserContext);
   const [modalState, modalDispatch] = useContext(ModalContext);
@@ -20,7 +19,7 @@ const DetailsItem = (props) => {
   const [episode, setEpisode] = useState(null);
 
   const { data: movie } = useQuery('movieDetailCache', async () => {
-    const response = await API.get(`${props.endpoint}${id}`);
+    const response = await API.get(`/film/${id}`);
     return response.data.data;
   });
 
