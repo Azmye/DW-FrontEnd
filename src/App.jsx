@@ -13,6 +13,9 @@ import { UserContext } from './Context/UserContext';
 import { API, setAuthToken } from './Config/Api';
 import AdminAddMovie from './Pages/AdminAddMovie';
 import Payment from './Pages/Payment';
+import { register } from 'swiper/element/bundle';
+
+register();
 
 const App = () => {
   let navigate = useNavigate();

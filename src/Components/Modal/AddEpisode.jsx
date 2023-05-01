@@ -15,6 +15,7 @@ const AddEpisode = (props) => {
     thumbnail: '',
     title: '',
     linkFilm: '',
+    year: '',
     film_id: '',
   });
 
@@ -36,7 +37,8 @@ const AddEpisode = (props) => {
       const formData = new FormData();
       formData.set('image', form.thumbnail[0], form.thumbnail[0].name);
       formData.set('title', form.title);
-      formData.set('linkfilm', form.video_link);
+      formData.set('year', 2022);
+      formData.set('linkFilm', form.linkFilm);
       formData.set('film_id', id);
 
       console.log('form data', formData);
@@ -62,8 +64,8 @@ const AddEpisode = (props) => {
       {message && message}
       <form onSubmit={(e) => handleOnSubmit.mutate(e)}>
         <div className="flex gap-x-3">
-          <input onChange={handleOnChange} className="w-3/4 mb-3 rounded-md p-2 placeholder-white border-2 border-white bg-zinc-500 focus:outline-none" type="text" name="title" placeholder="Title" />
-          <input onChange={handleOnChange} className="w-1/4 mb-3 rounded-md p-2 placeholder-white border-2 border-white bg-zinc-500 focus:outline-none file-input-ghost file:text-white" type="file" name="thumbnail" id="" />
+          <input onChange={handleOnChange} className="w-3/4 mb-3 rounded-md px-2 placeholder-white border-2 border-white bg-zinc-500 focus:outline-none" type="text" name="title" placeholder="Title" />
+          <input onChange={handleOnChange} className="w-1/4 mb-3 rounded-md px-2 placeholder-white border-2 border-white bg-zinc-500 focus:outline-none file-input-ghost file:text-white" type="file" name="thumbnail" id="" />
         </div>
         <input onChange={handleOnChange} className="w-full mb-3 rounded-md p-2 placeholder-white border-2 border-white bg-zinc-500 focus:outline-none" type="text" name="linkFilm" id="" placeholder="Link Video" />
         <button className="w-full bg-white py-2 rounded-md mb-2 text-red-700 font-semibold">Save</button>

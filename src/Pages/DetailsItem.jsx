@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import useFetch from '../Config/useFetch';
 import { useParams } from 'react-router-dom';
 import ReactPlayer from 'react-player';
@@ -17,6 +17,9 @@ const DetailsItem = (props) => {
   const [modalState, modalDispatch] = useContext(ModalContext);
   const [urlVideo, setUrlVideo] = useState(null);
   const [episode, setEpisode] = useState(null);
+  const swiperElRef = useRef(null);
+  const [currEps, setCurrEps] = useState(1);
+  console.log(currEps);
 
   const { data: movie } = useQuery('movieDetailCache', async () => {
     const response = await API.get(`/film/${id}`);
@@ -29,10 +32,22 @@ const DetailsItem = (props) => {
   });
 
   useEffect(() => {
-    episodes?.slice(0, 1).map((index) => setEpisode(index));
-  }, [episodes]);
+    episodes?.slice(0, currEps === 1 ? 1 : currEps + 1).map((index) => setEpisode(index));
+  }, [episodes, currEps]);
 
   console.log(episode);
+
+  useEffect(() => {
+    // listen for Swiper events using addEventListener
+    swiperElRef.current.addEventListener('progress', (e) => {
+      const [swiper, progress] = e.detail;
+      setCurrEps(currEps + Math.floor(progress));
+    });
+
+    // swiperElRef.current.addEventListener('slidechange', (e) => {
+    //   console.log('slide changed');
+    // });
+  }, []);
 
   return (
     <React.Fragment>
@@ -48,7 +63,7 @@ const DetailsItem = (props) => {
               </div>
             }
             controls={true}
-            url={`${episode ? episode.linkFilm : null}`}
+            url={`${episode ? `${episode.linkFilm}` : null}`}
           />
         </div>
       </div>
@@ -80,8 +95,17 @@ const DetailsItem = (props) => {
             </div>
           </div>
           <div className="w-1/2 mx-auto pl-28">
-            <img className="rounded-md object-cover w-full h-[330px]" src={episode ? episode.thumbnail : placeholderThumb} alt="" />
-            <h3>{movie?.title}</h3>
+            <swiper-container ref={swiperElRef} slides-per-view="1" navigation="true" pagination="true">
+              {episodes?.map((eps) => (
+                <swiper-slide key={eps.id}>
+                  <img className="rounded-md object-cover w-full h-[330px]" src={eps ? eps.thumbnail : placeholderThumb} alt="" />
+                </swiper-slide>
+              ))}
+            </swiper-container>
+            {/* <img className="rounded-md object-cover w-full h-[330px]" src={episode ? episode.thumbnail : placeholderThumb} alt="" /> */}
+            <h3>
+              <span className="font-bold">{movie?.title}</span> : {episode?.title}
+            </h3>
           </div>
         </div>
       </div>
