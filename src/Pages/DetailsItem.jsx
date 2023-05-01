@@ -29,8 +29,10 @@ const DetailsItem = (props) => {
   });
 
   useEffect(() => {
-    episodes?.map((index) => setEpisode(index));
+    episodes?.slice(0, 1).map((index) => setEpisode(index));
   }, [episodes]);
+
+  console.log(episode);
 
   return (
     <React.Fragment>
