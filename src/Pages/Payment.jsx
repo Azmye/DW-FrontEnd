@@ -25,6 +25,7 @@ const Payment = () => {
       document.body.removeChild(scriptTag);
     };
   }, []);
+
   const handleBuy = useMutation(async (e) => {
     try {
       const config = {
